@@ -1,0 +1,2 @@
+INFO 21:52:49:302 wdm.WebDriverManager detectDriverVersionFromBrowser:615 Using chromedriver 103.0.5060.53 (since Google Chrome 103 is installed in your machine)
+INFO 21:52:49:323 wdm.WebDriverManager exportDriver:1113 Exporting webdriver.chrome.driver as /Users/vasilypanteleev/.m2/repository/webdriver/chromedriver/mac64/103.0.5060.53/chromedriver
