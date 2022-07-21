@@ -4,6 +4,7 @@
 
 package definitions;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import static support.TestContext.getDriver;
 
@@ -12,5 +13,10 @@ public class Oganesyan {
     @Given("I open url {string}")
     public void iOpenUrl(String url) {
         getDriver().get(url);
+    }
+
+    @And("I add console output message")
+    public void iAddConsoleOutputMessage() {
+        System.out.println("This is a test message");
     }
 }
