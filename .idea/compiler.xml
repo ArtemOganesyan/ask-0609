@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="java-webdriver-cucumber" />
+        <module name="ask-0609" />
       </profile>
     </annotationProcessing>
   </component>
