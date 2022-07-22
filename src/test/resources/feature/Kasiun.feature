@@ -1,4 +1,4 @@
-@Feature
+@feature
   Feature: Test Feature
 
     @scenario
