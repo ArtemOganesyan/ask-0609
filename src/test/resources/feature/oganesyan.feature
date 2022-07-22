@@ -2,9 +2,7 @@
   Feature: Demo feature
 
     @scenario1
-    Scenario Outline: First scenario
-      Given I open url <url>
+    Scenario: First scenario
+      Given I open url "https://google.com"
       And I add console output message
-      Examples:
-        | url                  |
-        | "https://google.com" |
+      Then I want to add one step
