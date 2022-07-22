@@ -11,4 +11,8 @@ public class Mazin {
     @Then("I click the element with {string}")
     public void iClickTheElementWith(String arg0) {
     }
+
+    @Then("I wait {int} seconds")
+    public void iWaitSeconds(int arg0) {
+    }
 }
