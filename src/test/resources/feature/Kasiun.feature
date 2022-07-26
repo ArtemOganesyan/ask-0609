@@ -3,6 +3,7 @@ Feature: Registration - Password/Confirm password
   Background:
     Given SK open url "http://ask-stage.portnov.com"
     Then SK wait for 1 sec
+    Then SK should see page title as "Assessment Control @ Portnov"
     Then SK click on element with xpath "//span[contains(text(),'Register Now')]"
     Then SK type "Shelby" into element with xpath "//input[@formcontrolname='firstName']"
     Then SK type "Rabbit" into element with xpath "//input[@formcontrolname='lastName']"

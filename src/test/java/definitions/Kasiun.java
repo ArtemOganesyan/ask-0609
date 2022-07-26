@@ -3,6 +3,7 @@ package definitions;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -11,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.Assert.assertEquals;
 import static support.TestContext.getDriver;
 
@@ -47,5 +49,14 @@ public class Kasiun {
         getDriver().findElement(By.xpath(xpath)).sendKeys(val);
     }
 
+    @Then("SK should see page title as {string}")
+    public void skShouldSeePageTitleAs(String title) {
+        assertThat(getDriver().getTitle()).isEqualTo(title);
+    }
 
+    @Then("element with xpath {string} should be displayed")
+    public void elementWithXpathShouldBeDisplayed(String xpath) {
+        Assertions.assertThat(getDriver().findElement(By.xpath(xpath)).isDisplayed()).isTrue();
+    }
 }
+

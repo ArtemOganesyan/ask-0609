@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>Kasiun.feature</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #bbb529;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #cc7832;}
+.s3 { color: #a9b7c6;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Kasiun.feature</font>
+</center></td></tr></table>
+<pre><span class="s0">@testcases</span>
+<span class="s2">Feature</span><span class="s1">: </span><span class="s3">Registration - Password/Confirm password</span>
+  <span class="s2">Background</span><span class="s1">:</span>
+    <span class="s2">Given </span><span class="s3">SK open url &quot;http://ask-stage.portnov.com&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK wait for 1 sec</span>
+    <span class="s2">Then </span><span class="s3">SK click on element with xpath &quot;//span[contains(text(),'Register Now')]&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK type &quot;Shelby&quot; into element with xpath &quot;//input[@formcontrolname='firstName']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK type &quot;Rabbit&quot; into element with xpath &quot;//input[@formcontrolname='lastName']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK type &quot;tester01@gmail.com&quot; into element with xpath &quot;//input[@formcontrolname='email']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK type &quot;Abc123&quot; into element with xpath &quot;//input[@formcontrolname='group']&quot;</span>
+
+  <span class="s0">@TC-297</span>
+  <span class="s2">Scenario</span><span class="s1">: </span><span class="s3">Verify Alphanumeric &amp; Special characters are allowed</span>
+    <span class="s2">Then </span><span class="s3">SK type &quot;123!@#Abc&quot; into element with xpath &quot;//input[@formcontrolname='password']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK type &quot;123!@#Abc&quot; into element with xpath &quot;//input[@formcontrolname='confirmPassword']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK click on element with xpath &quot;//button[@type='submit']&quot;</span>
+    <span class="s2">And </span><span class="s3">SK wait for element with xpath &quot;//h4[contains(text(), 'Registered')]&quot; to be present</span>
+
+  <span class="s0">@TC-638</span>
+  <span class="s2">Scenario</span><span class="s1">: </span><span class="s3">Verify Password field is required - cannot be empty</span>
+    <span class="s2">Then </span><span class="s3">SK type &quot;123!@#Abc&quot; into element with xpath &quot;//input[@formcontrolname='confirmPassword']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK click on element with xpath &quot;//button[@type='submit']&quot;</span>
+    <span class="s2">And </span><span class="s3">SK wait for element with xpath &quot;//mat-error[contains(text(), 'required')]&quot; to be present</span>
+    <span class="s2">And </span><span class="s3">SK wait for element with xpath &quot;//mat-error[contains(text(), 'should match')]&quot; to be present</span>
+
+  <span class="s0">@TC-639</span>
+  <span class="s2">Scenario</span><span class="s1">: </span><span class="s3">Verify Confirm Password field is required - cannot be empty</span>
+    <span class="s2">Then </span><span class="s3">SK type &quot;123!@#Abc&quot; into element with xpath &quot;//input[@formcontrolname='password']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK click on element with xpath &quot;//button[@type='submit']&quot;</span>
+    <span class="s2">And </span><span class="s3">SK wait for element with xpath &quot;//mat-error[contains(text(), 'required')]&quot; to be present</span>
+
+  <span class="s0">@TC-640</span>
+  <span class="s2">Scenario</span><span class="s1">: </span><span class="s3">Verify Password contains 5 characters min</span>
+    <span class="s2">Then </span><span class="s3">SK put 5 characters into the field with xpath &quot;//input[@formcontrolname='password']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK put 5 characters into the field with xpath &quot;//input[@formcontrolname='confirmPassword']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK click on element with xpath &quot;//button[@type='submit']&quot;</span>
+    <span class="s2">And </span><span class="s3">SK wait for element with xpath &quot;//h4[contains(text(), 'Registered')]&quot; to be present</span>
+
+  <span class="s0">@TC-641</span>
+  <span class="s2">Scenario</span><span class="s1">: </span><span class="s3">Verify Password cannot contain less than 5 characters</span>
+    <span class="s2">Then </span><span class="s3">SK put 4 characters into the field with xpath &quot;//input[@formcontrolname='password']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK put 4 characters into the field with xpath &quot;//input[@formcontrolname='confirmPassword']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK click on element with xpath &quot;//button[@type='submit']&quot;</span>
+    <span class="s2">And </span><span class="s3">SK wait for element with xpath &quot;//mat-error[contains(text(), 'Too short')]&quot; to be present</span>
+
+  <span class="s0">@TC-642</span>
+  <span class="s2">Scenario</span><span class="s1">: </span><span class="s3">Verify Password contains 32 characters max</span>
+    <span class="s2">Then </span><span class="s3">SK put 32 characters into the field with xpath &quot;//input[@formcontrolname='password']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK put 32 characters into the field with xpath &quot;//input[@formcontrolname='confirmPassword']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK click on element with xpath &quot;//button[@type='submit']&quot;</span>
+    <span class="s2">And </span><span class="s3">SK wait for element with xpath &quot;//h4[contains(text(), 'Registered')]&quot; to be present</span>
+
+  <span class="s0">@TC-643</span>
+  <span class="s2">Scenario</span><span class="s1">: </span><span class="s3">Verify Password cannot contain more than 32 characters</span>
+    <span class="s2">Then </span><span class="s3">SK put 33 characters into the field with xpath &quot;//input[@formcontrolname='password']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK put 33 characters into the field with xpath &quot;//input[@formcontrolname='confirmPassword']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK click on element with xpath &quot;//button[@type='submit']&quot;</span>
+    <span class="s2">And </span><span class="s3">SK wait for element with xpath &quot;//mat-error[contains(text(), 'Too long')]&quot; to be present</span>
+
+  <span class="s0">@TC-644</span>
+  <span class="s2">Scenario</span><span class="s1">: </span><span class="s3">Verify Password cannot contain white space</span>
+    <span class="s2">Then </span><span class="s3">SK type &quot;123 Abc&quot; into element with xpath &quot;//input[@formcontrolname='password']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK type &quot;123 Abc&quot; into element with xpath &quot;//input[@formcontrolname='confirmPassword']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK click on element with xpath &quot;//button[@type='submit']&quot;</span>
+    <span class="s2">And </span><span class="s3">SK wait for element with xpath &quot;//mat-error[contains(text(), 'Whitespaces')]&quot; to be present</span>
+
+  <span class="s0">@TC-301</span>
+  <span class="s2">Scenario</span><span class="s1">: </span><span class="s3">Verify Password matches Confirm Password field</span>
+    <span class="s2">Then </span><span class="s3">SK type &quot;123!@#Abc&quot; into element with xpath &quot;//input[@formcontrolname='password']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK type &quot;123!@#Abc&quot; into element with xpath &quot;//input[@formcontrolname='confirmPassword']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK click on element with xpath &quot;//button[@type='submit']&quot;</span>
+    <span class="s2">And </span><span class="s3">SK wait for element with xpath &quot;//h4[contains(text(), 'Registered')]&quot; to be present</span>
+
+  <span class="s0">@TC-645</span>
+  <span class="s2">Scenario</span><span class="s1">: </span><span class="s3">Verify registration fails when Password and Confirm Password do not match</span>
+    <span class="s2">Then </span><span class="s3">SK type &quot;12345Abc&quot; into element with xpath &quot;//input[@formcontrolname='password']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK type &quot;12345Abcd&quot; into element with xpath &quot;//input[@formcontrolname='confirmPassword']&quot;</span>
+    <span class="s2">Then </span><span class="s3">SK click on element with xpath &quot;//button[@type='submit']&quot;</span>
+    <span class="s2">And </span><span class="s3">SK wait for element with xpath &quot;//mat-error[contains(text(), 'should match')]&quot; to be present</span>
+</pre>
+</body>
+</html>
